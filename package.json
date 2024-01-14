@@ -9,5 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^5.0.0-alpha.8",
+    "mongoose": "^8.0.4"
+  }
 }
