@@ -12,7 +12,7 @@ class StudentController {
                 fees: fees
             });
             await result.save();
-            res.send(result);
+            res.status(201).send(result);
         }catch(err){
             console.log(err);
         }
@@ -35,11 +35,25 @@ class StudentController {
                 console.log(err);
             }
     }
-    static updateDocById = (req,res) => {
-        res.send("updateDocById")
+    static updateDocById = async (req,res) => {
+
+        try {
+            const findStudent = await studentModel.findByIdAndUpdate(req.params.id,  req.body);
+            res.send(findStudent)
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
-    static deleteDocById = (req,res) => {
-        res.send("deleteDocById")
+    static deleteDocById = async (req,res) => {
+        try {
+            const deleteStudent = await studentModel.findByIdAndDelete(req.params.id);
+            res.send(deleteStudent)
+        } catch (error) {
+            console.log(error);
+            
+        }
+
     }
 }
 
