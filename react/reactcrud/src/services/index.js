@@ -9,6 +9,15 @@ export const student = createApi({
     }),
 
     endpoints: (builder) => ({
+        getAllStudentsList: builder.query({
+            query: () => ({
+                url:"/student",
+                method: "GET"
 
+            })
+
+        })
     })
 })
+
+export const { useGetAllStudentsListQuery } = student
