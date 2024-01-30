@@ -24,9 +24,17 @@ const studentSlice = createSlice({
     updateFees: (state, action) => {
       state.student.fees = action.payload;
     },
+    getStudentById: (state, action) => {
+        state.student = {
+          _id: action.payload._id,
+          name: action.payload.name,
+          age: action.payload.age,
+          fees: action.payload.fees.$numberDecimal,
+        };
+      }
   },
 });
 
-export const { updateName, updateAge, updateFees } = studentSlice.actions;
+export const { updateName, updateAge, updateFees, getStudentById } = studentSlice.actions;
 
 export default studentSlice.reducer;

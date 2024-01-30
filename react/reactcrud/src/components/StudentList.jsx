@@ -1,9 +1,13 @@
 import { useGetAllStudentsListQuery } from "../services";
+import { getStudentById } from "../store/student";
+import  { useSelector, useDispatch } from "react-redux";
 
 function StudentList() {
     const { data, error, isLoading } = useGetAllStudentsListQuery();
+    const dispatch = useDispatch(); 
     const editStudent = (student) => {
-        console.log(student);
+        console.log("object",JSON.stringify(student));
+        dispatch(getStudentById(student))
     }
     return (    
         <div>
