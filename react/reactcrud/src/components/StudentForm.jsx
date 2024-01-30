@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { useCreateStudentMutation } from "../services/index.js";
+import {
+    updateName,
+    updateAge,
+    updateFees,
+} from "../store/student";
 function StudentForm() {
     const [createStudent, res] = useCreateStudentMutation();
     const [student, setStudent] = useState({
@@ -14,7 +19,7 @@ function StudentForm() {
         try {
             // Call the mutate function to create a new student
             await createStudent(student);
-            
+
 
             // Clear the form after successful mutation
             setStudent({
@@ -66,4 +71,4 @@ function StudentForm() {
     );
 }
 
-    export default StudentForm;
+export default StudentForm;
