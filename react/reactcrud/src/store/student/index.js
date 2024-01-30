@@ -5,25 +5,28 @@ const studentSlice = createSlice({
   name: "student",
   initialState: {
     // Initial state for student data
-    name: "",
-    age: "",
-    fees: "",
+    student:{
+        name: "Rehman",
+        age: "18",
+        fees: "1300",
+
+    }
   },
   reducers: {
     // Add reducers to handle updating student data in the store
     updateName: (state, action) => {
-      state.name = action.payload;
+        console.log("object", action.payload);
+      state.student.name = action.payload;
     },
     updateAge: (state, action) => {
-      state.age = action.payload;
+      state.student.age = action.payload;
     },
     updateFees: (state, action) => {
-      state.fees = action.payload;
+      state.student.fees = action.payload;
     },
   },
 });
 
 export const { updateName, updateAge, updateFees } = studentSlice.actions;
-export const selectStudent = (state) => state.student; // Selector function
 
 export default studentSlice.reducer;
