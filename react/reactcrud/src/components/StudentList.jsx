@@ -6,6 +6,8 @@ function StudentList() {
     return (
         <div>
             <ul>
+                {isLoading && <p>Loading...</p>}
+                {error && <p>Error: {error.message}</p>}
                 {data &&
                     data.map((student) => (
                         <div key={student._id}>
