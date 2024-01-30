@@ -1,16 +1,33 @@
 import { useState } from "react";
-
+import { useCreateStudentMutation } from "../services/index.js";
 function StudentForm() {
+    const [createStudent, res] = useCreateStudentMutation();
     const [student, setStudent] = useState({
-        name: '',
-        age: '',
-        fees: ''
+        name: 'Khizar',
+        age: '25',
+        fees: '1251.25'
     });
 
-    const handleAddStudent = (e) => {
+    const handleAddStudent = async (e) => {
         e.preventDefault();
-        console.log(student);
+
+        try {
+            // Call the mutate function to create a new student
+            await createStudent(student);
+            
+
+            // Clear the form after successful mutation
+            setStudent({
+                name: '',
+                age: '',
+                fees: ''
+            });
+        } catch (error) {
+            console.error("Error creating student:", error);
+        }
     }
+
+
 
     return (
         <div>
@@ -49,4 +66,4 @@ function StudentForm() {
     );
 }
 
-export default StudentForm;
+    export default StudentForm;
